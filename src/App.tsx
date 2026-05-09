@@ -1,31 +1,33 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-gray-800">{title}</h1>
-        <p className="text-gray-500 mt-2">Coming in Step 8 →</p>
-      </div>
-    </div>
-  );
-}
+import ProtectedRoute from "./components/ui/ProtectedRoute";
+import DashboardLayout from "./components/layout/DashboardLayout";
+import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
+import ExpensesPage from "./pages/ExpensesPage";
+import BudgetPage from "./pages/BudgetPage";
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/login" element={<PlaceholderPage title="Login" />} />
+      {/* Public */}
+      <Route path="/login" element={<LoginPage />} />
+
+      {/* Protected — all inside DashboardLayout (Sidebar + Outlet) */}
       <Route
-        path="/dashboard"
-        element={<PlaceholderPage title="Dashboard" />}
-      />
-      <Route path="/expenses" element={<PlaceholderPage title="Expenses" />} />
-      <Route path="/budget" element={<PlaceholderPage title="Budget" />} />
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/expenses" element={<ExpensesPage />} />
+        <Route path="/budget" element={<BudgetPage />} />
+      </Route>
+
+      {/* Default redirect */}
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      <Route
-        path="*"
-        element={<PlaceholderPage title="404 — Page not found" />}
-      />
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );
 }
