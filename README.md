@@ -8,7 +8,7 @@
 
 | Resource          | URL                                                                                                |
 | ----------------- | -------------------------------------------------------------------------------------------------- |
-| 🎨 Live Dashboard | [expense-tracker-frontend.vercel.app](https://expense-tracker-frontend.vercel.app)                 |
+| 🎨 Live Dashboard | [expense-tracker-frontend.vercel.app](https://expense-tracker-telegram-bot-fronte.vercel.app/login)                 |
 | 🤖 Telegram Bot   | [@ExpenseTrack_R_Bot](https://t.me/ExpenseTrack_R_Bot)                                                   |
 | ⚙️ Backend Repo   | [github.com/yourname/expense-tracker-backend](https://github.com/rifah07/expense-tracker-telegram-bot-backend) |
 
